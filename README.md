@@ -1,2 +1,3 @@
-# io
-Algocpp.IO
+# Algocpp.IO
+
+Algocpp input/output library
