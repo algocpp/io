@@ -4,6 +4,9 @@
 // This file is part of algocpp and is copyrighted by algocpp.
 // If used, it must comply with the MIT License.
 
+#ifndef ALGOCPP_IO_OUTPUT
+#define ALGOCPP_IO_OUTPUT
+
 #include <iostream>
 #include <map>
 #include <vector>
@@ -11,9 +14,6 @@
 #include <locale>
 #include <codecvt>
 #include <algocpp/type/format.hpp>
-
-#ifndef ALGOCPP_IO_OUTPUT
-#define ALGOCPP_IO_OUTPUT
 
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const std::vector<T> &v)
