@@ -14,6 +14,7 @@
 #include <locale>
 #include <codecvt>
 #include <algocpp/type/format.hpp>
+#include <algocpp/string/wconvert.hpp>
 
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const std::vector<T> &v)
@@ -41,18 +42,7 @@ std::ostream &operator<<(std::ostream &os, const std::set<T> &x)
 
 std::ostream &operator<<(std::ostream &os, const std::u32string &s)
 {
-	std::wstring_convert<std::codecvt_utf8<char32_t>, char32_t> utf32conv;
-
-	os << utf32conv.to_bytes(s);
-
-	return os;
-}
-
-std::ostream &operator<<(std::ostream &os, const std::u16string &s)
-{
-	std::wstring_convert<std::codecvt_utf8<char16_t>, char16_t> utf16conv;
-
-	os << utf16conv.to_bytes(s);
+	os << algocpp::string::utf32conv.to_bytes(s);
 
 	return os;
 }
@@ -64,12 +54,52 @@ std::ostream &operator<<(std::ostream &os, const char32_t &c)
 	return os;
 }
 
+std::ostream &operator<<(std::ostream &os, const std::u16string &s)
+{
+	os << algocpp::string::utf16conv.to_bytes(s);
+
+	return os;
+}
+
 std::ostream &operator<<(std::ostream &os, const char16_t &c)
 {
 	os << std::u16string{c};
 
 	return os;
 }
+
+std::ostream &operator<<(std::ostream &os, const std::wstring &s)
+{
+	os << algocpp::string::wstrconv.to_bytes(s);
+
+	return os;
+}
+
+std::ostream &operator<<(std::ostream &os, const wchar_t &c)
+{
+	os << std::wstring{c};
+
+	return os;
+}
+
+// C++20
+#if __cplusplus >= 202002LL
+
+std::ostream &operator<<(std::ostream &os, const std::u8string &s)
+{
+	os << std::string(s.begin(), s.end());
+
+	return os;
+}
+
+std::ostream &operator<<(std::ostream &os, const char8_t &c)
+{
+	os << std::u8string{c};
+
+	return os;
+}
+
+#endif
 
 template <typename T1, typename T2>
 std::ostream &operator<<(std::ostream &os, const std::map<T1, T2> &x)
