@@ -8,8 +8,10 @@
 #define ALGOCPP_IO_OUTPUT
 
 #include <iostream>
-#include <map>
 #include <vector>
+#include <array>
+#include <list>
+#include <map>
 #include <set>
 #include <locale>
 #include <codecvt>
@@ -18,6 +20,22 @@
 
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const std::vector<T> &v)
+{
+	os << algocpp::type::format(v);
+
+	return os;
+}
+
+template <typename T, std::size_t x>
+std::ostream &operator<<(std::ostream &os, const std::array<T, x> &v)
+{
+	os << algocpp::type::format(v);
+
+	return os;
+}
+
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::list<T> &v)
 {
 	os << algocpp::type::format(v);
 
