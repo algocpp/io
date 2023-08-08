@@ -59,6 +59,14 @@ std::ostream &operator<<(std::ostream &os, const std::set<T> &x)
 	return os;
 }
 
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::unordered_set<T> &x)
+{
+	os << algocpp::type::format(x);
+
+	return os;
+}
+
 std::ostream &operator<<(std::ostream &os, const std::u32string &s)
 {
 	os << algocpp::string::utf32conv.to_bytes(s);
