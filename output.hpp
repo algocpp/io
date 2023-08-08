@@ -13,6 +13,7 @@
 #include <list>
 #include <map>
 #include <set>
+#include <queue>
 #include <locale>
 #include <codecvt>
 #include <algocpp/type/format.hpp>
@@ -121,6 +122,14 @@ std::ostream &operator<<(std::ostream &os, const char8_t &c)
 
 template <typename T1, typename T2>
 std::ostream &operator<<(std::ostream &os, const std::map<T1, T2> &x)
+{
+	os << algocpp::type::format(x);
+
+	return os;
+}
+
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::queue<T> &x)
 {
 	os << algocpp::type::format(x);
 
