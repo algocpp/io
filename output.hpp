@@ -19,6 +19,10 @@
 #include <algocpp/type/format.hpp>
 #include <algocpp/string/wconvert.hpp>
 
+#if !defined(ALGOCPP_DONT_LIB) && __has_include(<boost/array.hpp>)
+#include <boost/array.hpp>
+#endif
+
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const std::vector<T> &v)
 {
@@ -34,6 +38,18 @@ std::ostream &operator<<(std::ostream &os, const std::array<T, x> &v)
 
 	return os;
 }
+
+#ifdef BOOST_ARRAY_HPP
+
+template <typename T, std::size_t n>
+std::ostream &operator<<(std::ostream &os, const boost::array<T, n> &v)
+{
+	os << algocpp::type::format(v);
+
+	return os;
+}
+
+#endif
 
 template <typename T>
 std::ostream &operator<<(std::ostream &os, const std::list<T> &v)
