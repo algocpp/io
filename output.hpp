@@ -11,8 +11,10 @@
 #include <vector>
 #include <array>
 #include <list>
-#include <map>
 #include <set>
+#include <unordered_set>
+#include <map>
+#include <unordered_map>
 #include <queue>
 #include <locale>
 #include <codecvt>
@@ -146,6 +148,14 @@ std::ostream &operator<<(std::ostream &os, const char8_t &c)
 
 template <typename T1, typename T2>
 std::ostream &operator<<(std::ostream &os, const std::map<T1, T2> &x)
+{
+	os << algocpp::type::format(x);
+
+	return os;
+}
+
+template <typename T1, typename T2>
+std::ostream &operator<<(std::ostream &os, const std::unordered_map<T1, T2> &x)
 {
 	os << algocpp::type::format(x);
 
