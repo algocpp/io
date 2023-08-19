@@ -25,66 +25,6 @@
 #include <boost/array.hpp>
 #endif
 
-template <typename T>
-std::ostream &operator<<(std::ostream &os, const std::vector<T> &v)
-{
-	os << algocpp::type::format(v);
-
-	return os;
-}
-
-template <typename T, std::size_t x>
-std::ostream &operator<<(std::ostream &os, const std::array<T, x> &v)
-{
-	os << algocpp::type::format(v);
-
-	return os;
-}
-
-#ifdef BOOST_ARRAY_HPP
-
-template <typename T, std::size_t n>
-std::ostream &operator<<(std::ostream &os, const boost::array<T, n> &v)
-{
-	os << algocpp::type::format(v);
-
-	return os;
-}
-
-#endif
-
-template <typename T>
-std::ostream &operator<<(std::ostream &os, const std::list<T> &v)
-{
-	os << algocpp::type::format(v);
-
-	return os;
-}
-
-template <typename T1, typename T2>
-std::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &p)
-{
-	os << algocpp::type::format(p);
-
-	return os;
-}
-
-template <typename T>
-std::ostream &operator<<(std::ostream &os, const std::set<T> &x)
-{
-	os << algocpp::type::format(x);
-
-	return os;
-}
-
-template <typename T>
-std::ostream &operator<<(std::ostream &os, const std::unordered_set<T> &x)
-{
-	os << algocpp::type::format(x);
-
-	return os;
-}
-
 std::ostream &operator<<(std::ostream &os, const std::u32string &s)
 {
 	os << algocpp::string::utf32conv.to_bytes(s);
@@ -145,6 +85,76 @@ std::ostream &operator<<(std::ostream &os, const char8_t &c)
 }
 
 #endif
+
+// =================================================================
+
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::vector<T> &v)
+{
+	os << algocpp::type::format(v);
+
+	return os;
+}
+
+template <typename T, std::size_t x>
+std::ostream &operator<<(std::ostream &os, const std::array<T, x> &v)
+{
+	os << algocpp::type::format(v);
+
+	return os;
+}
+
+#ifdef BOOST_ARRAY_HPP
+
+template <typename T, std::size_t n>
+std::ostream &operator<<(std::ostream &os, const boost::array<T, n> &v)
+{
+	os << algocpp::type::format(v);
+
+	return os;
+}
+
+#endif
+
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::list<T> &v)
+{
+	os << algocpp::type::format(v);
+
+	return os;
+}
+
+template <typename T1, typename T2>
+std::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &p)
+{
+	os << algocpp::type::format(p);
+
+	return os;
+}
+
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::set<T> &x)
+{
+	os << algocpp::type::format(x);
+
+	return os;
+}
+
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::multiset<T> &x)
+{
+	os << algocpp::type::format(x);
+
+	return os;
+}
+
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::unordered_set<T> &x)
+{
+	os << algocpp::type::format(x);
+
+	return os;
+}
 
 template <typename T1, typename T2>
 std::ostream &operator<<(std::ostream &os, const std::map<T1, T2> &x)
