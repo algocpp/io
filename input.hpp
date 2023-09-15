@@ -74,6 +74,8 @@ std::istream &operator>>(std::istream &is, std::list<T> &v)
 		is >> tmp;
 		v.emplace_back(tmp);
 	}
+
+	return is;
 }
 
 #endif // ALGOCPP_IO_INPUT
